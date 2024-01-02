@@ -1,0 +1,98 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+.cards__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px 70px;
+  @media (max-width: 1120px) {
+    column-gap: 25px;
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 780px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 9px;
+  height: 100%;
+  border-radius: 9px;
+  background: $colorWhite;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease-in-out ;
+  &:hover {
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.55);
+  }
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 9px;
+    width: 100%;
+  }
+  &__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    @media (max-width: 420px) {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+  }
+  &__box-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    @media (max-width: 420px) {
+      flex-direction: row;
+      gap: 10px;
+    }
+    @media (max-width: 420px) {
+      flex-direction: column;
+    }
+  }
+  &__account {
+    @include fontUbuntu(18px, 22px, $colorText);
+    font-weight: 500;
+    letter-spacing: -0.18px;
+    @media (max-width: 420px) {
+      font-size: 14px;
+    }
+  }
+  &__sum {
+    @include fontUbuntu(14px, 20px, $colorText);
+  }
+  &__sum::after {
+    content: '\20BD';
+    color: inherit;
+    padding-left: 3px;
+  }
+  &__text-data {
+    @include fontWorkSans(13px, 100%, $colorBlack);
+    font-weight: 700;
+    letter-spacing: -0.26px;
+  }
+  &__data {
+    @include fontWorkSans(13px, 100%, $colorBlack);
+    letter-spacing: -0.26px;
+  }
+  &__link {
+    @include link($colorWhite, $colorPrimary);
+    @include linkColorActive;
+    @media (max-width: 420px) {
+      width: 100%;text-align: center;
+    }
+  }
+}

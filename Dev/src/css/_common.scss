@@ -1,0 +1,550 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	src: local('Ubuntu Medium'), local('Ubuntu-Bold'),
+        url('../fonts/Ubuntu-Medium.woff2') format('woff2'),
+		url('../fonts/Ubuntu-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	src: local('Ubuntu Regular'), local('Ubuntu-Regular'),
+        url('../fonts/Ubuntu-Regular.woff2') format('woff2'),
+		url('../fonts/Ubuntu-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: local('WorkSans Regular'), local('WorkSansRegular'),
+        url('../fonts/WorkSansRegular.woff2') format('woff2'),
+		url('../fonts/WorkSansRegular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: local('WorkSans Light'), local('WorkSansLight'),
+        url('../fonts/WorkSansLight.woff2') format('woff2'),
+		url('../fonts/WorkSansLight.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: local('WorkSans Medium'), local('WorkSansMedium'),
+        url('../fonts/WorkSansMedium.woff2') format('woff2'),
+		url('../fonts/WorkSansMedium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: local('WorkSans SemiBold'), local('WorkSansSemiBold'),
+        url('../fonts/WorkSansSemiBold.woff2') format('woff2'),
+		url('../fonts/WorkSansSemiBold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: local('WorkSans Bold'), local('WorkSansBold'),
+        url('../fonts/WorkSansBold.woff2') format('woff2'),
+		url('../fonts/WorkSansBold.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+    font-display: swap;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'WorkSans', sans-serif;
+    @include fontUbuntu(16px, 20px, $colorBlack);
+    font-weight: 400;
+    background-color: $colorWhite;
+    height: 100vh;
+    position: relative;
+}
+
+.container {
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 1370px;
+    width: 100%;
+    @media (max-width: 1024px) {
+      max-width: 982px
+  }
+  @media (max-width: 780px) {
+      max-width: 738px
+  }
+  @media (max-width: 562px){
+    max-width: 532px;
+  }
+  @media (max-width: 380px) {
+      max-width: 320px;
+      padding: 0 12px;
+  }
+}
+
+.main {
+  margin: 0 auto;
+  width: 100%;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.section {
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.title {
+  @include fontWorkSans(34px, 100%, $colorBlack);
+  font-weight: 700;
+  letter-spacing: -0.68px;
+}
+
+.title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  @media (max-width: 562px) {
+    flex-direction: column;
+  }
+}
+
+.select-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  @media (max-width: 992px) {
+    gap: 15px;
+  }
+  @media (max-width: 780px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media (max-width: 562px) {
+    align-items: center;
+  }
+}
+
+.page__btn {
+  @include btnResert($colorWhite, $colorPrimary);
+  border: none;
+  @include linkColorActive;
+}
+
+a.icon__back, button.icon__mail, button.icon__plus {
+  padding-left: 60px;
+  position: relative;
+}
+
+.icon__back::after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  background: url(../images/arrow.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+.icon__mail::after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  background: url(../images/mail.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+.icon__plus::after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  background: url(../images/plus.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+.select {
+  padding: 8px 16px;
+  border-radius: 7px;
+  border: 1px solid $colorGrey;
+  background: $colorWhite;
+  @include fontUbuntu(16px, 24px, $colorTextBlack);
+  outline: none;
+}
+
+.title__box {
+  margin-bottom: 25px;
+  @include fontWorkSans(20px, 100%, $colorBlack);
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 25px;
+  &__label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+  }
+  &__input {
+    padding: 8px 10px 8px 16px;
+    border-radius: 7px;
+    border: 1px solid $colorGrey;
+    background: $colorWhite;
+    min-width: 80%;
+    outline: none;
+    @include fontUbuntu(16px, 24px, $colorTextBlack);
+    letter-spacing: -0.16px;
+    @include inputActive;
+  }
+  &__text {
+    @include fontUbuntu(16px, 20px, $colorText);
+    font-weight: 500;
+    letter-spacing: -0.16px;
+  }
+  &__btn {
+    @include btnResert($colorWhite, $colorPrimary);
+    border: none;
+    @include linkColorActive;
+
+  }
+  &__error {
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+    @include fontUbuntu(16px, 20px, $colorError);
+    font-weight: 500;
+    letter-spacing: -0.16px;
+  }
+}
+
+.form__label .just-validate-error-label {
+  position: absolute;
+  bottom: -20px;
+  left: 40px;
+  @include fontUbuntu(16px, 20px, $colorError);
+  font-weight: 500;
+  letter-spacing: -0.16px;
+}
+
+.just-validate-error-field {
+  border: 2px solid $colorError;
+}
+
+.history {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+  // & .balance__box > .balance__diagram {
+
+  //   max-height: 195px;
+  // }
+  }
+}
+
+#map {
+  width: 100%;
+  height: 730px;
+  background-color: $colorWhite;
+}
+
+/*Choices*/
+.choices__inner {
+  margin-right: 6px;
+  min-width: 300px;
+  background-color: $colorWhite;
+  border-radius: 7px;
+  border: 1px solid $colorPrimary;
+  @include fontUbuntu(16px, 24px, $colorTextBlack);
+  letter-spacing: -0.16px;
+  @media (max-width: 780px) {
+    min-width: 250px;
+  }
+}
+
+.choices__inner.choices__inner-exchange {
+  min-width: 135px;
+  @media (max-width: 1290px) {
+    min-width: 280px;
+  }
+}
+
+.choices__list--dropdown .choices__item--selectable, .choices__list[aria-expanded] .choices__item--selectable {
+  padding-right: 0px;
+  border: none;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+  background-color: $colorPrimaryLight;
+
+}
+
+.choices__item--selectable.is-highlighted {
+  position: relative;
+}
+
+.choices__item--selectable.is-highlighted::before {
+  content: '';
+  background: url(../images/check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 16px;
+  top: 5px;
+}
+
+.modal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $colorBlack;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  &.open {
+    opacity: 0.8;
+    visibility: visible;
+  }
+  &__body {
+    padding: 50px 85px 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+    background-color: $colorWhite;
+    border-radius: 50px;
+    max-width: 500px;
+    @media (max-width: 562px) {
+      padding: 25px;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    @include fontWorkSans(24px, 100%, $colorBlack);
+    font-weight: bold;
+    align-self: center;
+  }
+  &__text {
+    @include fontWorkSans(20px, 100%, $colorBlack);
+  }
+  &__amount {
+    letter-spacing: -0.4px;
+  }
+  &__amount::after {
+    content: '\20BD';
+    color: inherit;
+    padding-left: 3px;
+  }
+}
+
+.skeleton {
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  &__title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    @media (max-width: 562px) {
+      flex-direction: column;
+    }
+  }
+  &__title {
+    width: 520px;
+    height: 50px;
+    background-color: $colorSkeleton;
+    border-radius: 9px;
+  }
+  &__check {
+    width: 330px;
+    height: 50px;
+    background-color: $colorSkeleton;
+    border-radius: 9px;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 70px;
+    @media (max-width: 1120px) {
+      column-gap: 25px;
+    }
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 780px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__card {
+    width: 400px;
+    height: 155px;
+    background-color: $colorSkeleton;
+    border-radius: 9px;
+  }
+  &__box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+  &__change, &__balance {
+    width: 600px;
+    height: 290px;
+    border-radius: 50px;
+    background-color: $colorSkeleton;
+  }
+  &__table {
+    grid-column: span 2;
+    height: 340px;
+    border-radius: 50px;
+    background-color: $colorSkeleton;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+  }
+  &__diagramm {
+    width: 100%;
+    height: 340px;
+    border-radius: 50px;
+    background-color: $colorSkeleton;
+  }
+  &__currency {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    gap: 50px;
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+    @media (max-width: 562px) {
+      gap: 25px;
+    }
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+  &__all {
+    border-radius: 50px;
+    background-color: $colorSkeleton;
+    height: 100%;
+  }
+  &__item {
+    border-radius: 50px;
+    background-color: $colorSkeleton;
+  }
+  &__item:first-child {
+    height: 480px;
+  }
+  &__item:nth-child(2) {
+    height: 270px;
+  }
+  &__map {
+    width: 100%;
+    height: 730px;
+    border-radius: 50px;
+    background-color: $colorSkeleton;
+  }
+  .animation {
+    position: relative;
+    overflow: hidden;
+  }
+  .animation::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -150px;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(to right, transparent 0%, #E8E8E8 50%, transparent 100%);
+    animation: load 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+
+    }
+    @keyframes load {
+      from {
+      left: -150px;
+      } to {
+      left: 100%;
+      }
+      }
+}
+

@@ -1,0 +1,99 @@
+@import '_variables.scss';
+
+@mixin fontUbuntu($fz, $lh, $color){
+    font-family: 'Ubuntu';
+    font-size: $fz;
+    line-height: $lh;
+    font-weight: normal;
+    color: $color;
+}
+
+@mixin fontWorkSans($fz, $lh, $color){
+  font-family: 'WorkSans';
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: normal;
+  color: $color;
+}
+
+@mixin btnResert($color, $bgcolor) {
+  margin: 0;
+  padding: 16px 24px;
+  border-radius: 7px;
+  border: 2px solid $colorPrimary;
+  background-color: $bgcolor;
+  text-align: center;
+  @include fontUbuntu(16px, 20px, $colorWhite);
+  color: $color;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  @media (max-width: 562px) {
+    padding: 12px 16px;
+  }
+}
+
+@mixin link($color, $bgcolor) {
+  padding: 16px 24px;
+  border-radius: 7px;
+  border: 2px solid $color;
+  background: $bgcolor;
+  @include fontUbuntu(16px, 20px, $bgcolor);
+  font-weight: 500;
+  color: $color;
+  transition: background 0.3s ease-in-out;
+  outline: none;
+
+  &:hover {
+    background: $colorHover;
+  }
+  &:active {
+    background: $colorPrimaryLight;
+  }
+  &:disabled {
+    border: 1px solid $colorGrey;
+    opacity: 0.5;
+    background: $bgcolor;
+  }
+  &.active__page {
+    background: $colorPrimaryLight;
+  }
+  @media (max-width: 562px) {
+    padding: 12px 16px;
+  }
+}
+
+@mixin linkColorActive() {
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.30) 100%), $colorPrimary;
+  }
+  &:active {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), $colorPrimary;
+  }
+  &:disabled {
+    opacity: 0.5;
+    background: $colorGrey;
+    cursor: auto;
+  }
+}
+
+
+@mixin inputActive() {
+  transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+  &:focus-visible {
+    background-color: rgba($colorPrimaryLight, 0.1);
+  }
+  &:hover {
+    background-color: rgba($colorPrimaryLight, 0.05);
+  }
+  &.error {
+    border: #BA0000;
+  }
+  &::placeholder {
+    @include fontUbuntu(16px, 24px, $colorGrey);
+    letter-spacing: -0.16px;
+  }
+}
+// rgba(160, 195, 255, 0.10)

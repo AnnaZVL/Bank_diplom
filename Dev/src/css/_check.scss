@@ -1,0 +1,303 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+.check {
+  &__link {
+    @include link($colorWhite, $colorPrimary);
+    @include linkColorActive();
+  }
+  &__info {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 780px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+  &__number {
+    @include fontWorkSans(34px, 100%, $colorBlack);
+    letter-spacing: -0.68px;
+    @media (max-width: 1250px) {
+      font-size: 28px;
+    }
+    @media (max-width: 562px) {
+      font-size: 20px;
+    }
+  }
+  &__balance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    @media (max-width: 562px) {
+      gap: 25px;
+    }
+   }
+  &__balance-title {
+    @include fontWorkSans(20px, 100%, $colorBlack);
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+  &__balance-sum {
+    @include fontWorkSans(20px, 100%, $colorBlack);
+    letter-spacing: -0.4px;
+  }
+  &__balance-sum::after {
+    content: '\20BD';
+    color: inherit;
+    padding-left: 3px;
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    grid-template-rows: 290px auto;
+    gap: 50px;
+    @media (max-width: 1250px) {
+      grid-template-columns: 1fr;
+    }
+    @media (max-width: 780px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      column-gap: 0;
+    }
+  }
+  &__box {
+    padding: 25px 50px;
+    background-color: $colorGreyLidht;
+    border-radius: 50px;
+    @media (max-width: 562px) {
+      padding: 25px
+    }
+  }
+  &__form {
+    &-top {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      gap: 25px;
+      @media (max-width: 1250px) {
+        flex-direction: row;
+      }
+      @media (max-width: 992px) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  &__label {
+    justify-content: flex-end;
+    @media (max-width: 1250px) {
+      width: 60%;
+      justify-content: flex-start;
+    }
+    @media (max-width: 992px) {
+      justify-content: space-between;
+    }
+    @media (max-width: 780px) {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &__input {
+    min-width: 300px;
+    @media (max-width: 562px) {
+      min-width: 180px;
+    }
+  }
+  &__to {
+    padding: 8px 10px 8px 16px;
+    border-radius: 7px;
+    border: 1px solid $colorGrey;
+    background: $colorWhite;
+    min-width: 300px;
+    @include fontUbuntu(16px, 24px, $colorTextBlack);
+    letter-spacing: -0.16px;
+    outline: none;
+    border-radius: 5px;
+    @media (max-width: 992px) {
+      min-width: 180px;
+    }
+
+  }
+  &__list {
+    display: block;
+    padding: 8px 0;
+    position: absolute;
+    top: 34px;
+    left: 202px;
+    z-index: 10;
+    min-width: 300px;
+    max-height: 20rem;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    option {
+      padding: 10px 16px;
+      background-color: $colorWhite;
+      cursor: pointer;
+    }
+    option:hover,  .active{
+      background-color: $colorPrimaryLight;
+    }
+  }
+  &__btn {
+    align-self: center;
+  }
+}
+
+.balance__box {
+  padding: 25px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  border-radius: 50px;
+  background: $colorWhite;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.25);
+  & > .title__box {
+    margin-bottom: 0;
+  }
+  @media (max-width: 780px) {
+    display: none;
+  }
+}
+
+.balance__diagram {
+  position: relative;
+  height: 24vh;
+  width: 100%;
+  background: $colorWhite;
+  @media (max-width: 1024px) {
+   height: 24vh;
+  }
+}
+
+.table-box {
+  padding: 25px 50px;
+  background-color: $colorGreyLidht;
+  border-radius: 50px;
+  grid-column: span 2;
+  @media (max-width: 1250px) {
+   grid-column: span 1;
+  }
+  @media (max-width: 562px) {
+    padding: 25px
+  }
+}
+
+.table {
+  grid-column: span 2;
+  &__row {
+    padding: 25px 50px;
+    display: flex;
+    align-items: flex-start;
+    gap: 45px;
+    border-bottom: 2px solid rgba($colorPrimary, 0.2);
+    @media (max-width: 1250px) {
+      padding: 25px 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+    @media (max-width: 780px) {
+      padding: 10px 0 0;
+    }
+    @media (max-width: 420px) {
+      width: 90%;
+    }
+  }
+  &__item {
+    @include fontUbuntu(16px, 24px, $colorTextBlack);
+    letter-spacing: -0.16px;
+    min-width: 170px;
+    max-width: 250px;
+    width: 100%;
+    @media (max-width: 1250px) {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      max-width: none;
+    }
+    @media (max-width: 562px) {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+  }
+  &__item:nth-child(3) {
+    width: inherit;
+  }
+  &__header {
+    border-radius: 15px;
+    background-color: $colorPrimary;
+    @media (max-width: 1250px) {
+      display: none;
+    }
+  }
+  &__text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__title {
+    display: none;
+    position: relative;
+    @include fontUbuntu(20px, 24px, $colorWhite);
+    letter-spacing: -0.2px;
+    background-color: $colorPrimary;
+    border-radius: 15px;
+    min-width: 190px;
+    @media (max-width: 1250px) {
+      display: block;
+      padding: 10px;
+    }
+    @media (max-width: 562px) {
+      font-size: 16px;
+      padding: 5px;
+    }
+  }
+}
+
+.table__header .table__row .table__header-item:nth-child(3) {
+  width: inherit;
+}
+
+.table__header .table__row .table__header-item{
+  @include fontUbuntu(20px, 24px, $colorWhite);
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  min-width: 170px;
+  max-width: 250px;
+  width: 100%;
+}
+
+.table__text.outgoing {
+  color: $colorSecondary;
+}
+
+.table__text.incoming {
+  color: $colorSuccess;
+}
+
+.item__amount::after {
+  content: '\20BD';
+  color: inherit;
+  padding-left: 3px;
+}
